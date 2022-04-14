@@ -4,13 +4,13 @@ import it.engineering.web.test.domain.Mesto;
 import it.engineering.web.test.repository.*;
 
 
-public class TestingMestoRepository {
+public class MestoRepositoryTest {
 	public static void main(String[] args) {
 		MestoRepository mestoRepository= new MestoRepository();
 		Mesto mesto1 = new Mesto(11000,"Beograd");
-		Mesto mesto3 = new Mesto(3L,13000,"Beograd merge izmenjen");
+		Mesto mesto3 = new Mesto(4L,13000," merge izmenjen");
 		mestoRepository.saveOrUpdate(mesto3);
-		mestoRepository.delete(2L);
+//		mestoRepository.delete(2L);
 		System.out.println(mesto1);
 	}
 }
