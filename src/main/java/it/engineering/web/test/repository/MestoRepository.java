@@ -1,4 +1,4 @@
-package it.engineering.web.test.domain.repository;
+package it.engineering.web.test.repository;
 
 import javax.persistence.EntityManager;
 
@@ -13,14 +13,15 @@ public class MestoRepository {
 		System.out.println(mesto);
 		em.getTransaction().commit();
 	}
-	
+
 	public Mesto findById(Long id) {
 		EntityManager em = MyEntityManagerFactory.getEntityManagerFactory().createEntityManager();
 		return em.find(Mesto.class, id);
 	}
+
 	public void delete(Long id) {
 		EntityManager em = MyEntityManagerFactory.getEntityManagerFactory().createEntityManager();
-		Mesto mesto =em.find(Mesto.class, id);
+		Mesto mesto = em.find(Mesto.class, id);
 		em.getTransaction().begin();
 		em.remove(mesto);
 		em.getTransaction().commit();
