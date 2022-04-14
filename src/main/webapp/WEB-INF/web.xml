@@ -4,6 +4,9 @@
 
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
+  <listener>
+  	<listener-class>it.engineering.web.test.listener.StartupContext</listener-class>
+  </listener>
   <servlet>
   	<servlet-name>FrontController</servlet-name>
   	<display-name>FrontController</display-name>
