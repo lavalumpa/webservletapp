@@ -1,5 +1,7 @@
 package it.engineering.web.test.repository;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 
 import it.engineering.web.test.domain.Producer;
@@ -25,5 +27,11 @@ public class ProducerRepository {
 		em.getTransaction().begin();
 		em.remove(production);
 		em.getTransaction().commit();
+	}
+	
+	public List<Producer> findAll(){
+		EntityManager em = MyEntityManagerFactory.getEntityManagerFactory().createEntityManager();
+		String query="SELECT p FROM producer p  ";
+		return em.createQuery(query,Producer.class).getResultList();
 	}
 }
