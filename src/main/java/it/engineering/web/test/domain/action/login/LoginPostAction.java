@@ -1,5 +1,7 @@
 package it.engineering.web.test.domain.action.login;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -15,6 +17,11 @@ public class LoginPostAction extends AbstractAction{
 		UserRepository userRepository= new UserRepository();
 		String username = request.getParameter("username");
 		User user = userRepository.findByUsername(username);
+		List<User> loggedUsers =(List<User> ) request.getServletContext().getAttribute("loggedUsers");
+		if (loggedUsers.contains(user)) {
+			request.setAttribute("message", "User logged in");
+			return Constants.PAGE_LOGIN;
+		}
 		if (user==null) {
 			request.setAttribute("message", "User does not exist");
 			return Constants.PAGE_LOGIN;
@@ -25,6 +32,7 @@ public class LoginPostAction extends AbstractAction{
 			return Constants.PAGE_LOGIN;
 		}
 		request.setAttribute("user", user);
+		loggedUsers.add(user);
 		return Constants.PAGE_HOME;
 	}
 
