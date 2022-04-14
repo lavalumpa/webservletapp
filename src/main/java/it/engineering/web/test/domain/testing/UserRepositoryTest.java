@@ -3,7 +3,7 @@ package it.engineering.web.test.domain.testing;
 import it.engineering.web.test.domain.User;
 import it.engineering.web.test.repository.UserRepository;
 
-public class TestingUserRepository {
+public class UserRepositoryTest {
 	public static void main(String[] args) {
 //		User user1= new User("user1", "user1");
 		UserRepository userRepository=new UserRepository();
