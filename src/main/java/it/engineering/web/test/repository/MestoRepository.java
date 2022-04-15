@@ -6,6 +6,10 @@ import it.engineering.web.test.domain.Mesto;
 import it.engineering.web.test.persistance.MyEntityManagerFactory;
 
 public class MestoRepository {
+	private static MestoRepository instance;
+	
+	private MestoRepository() {};
+	
 	public void saveOrUpdate(Mesto mesto) {
 		EntityManager em = MyEntityManagerFactory.getEntityManagerFactory().createEntityManager();
 		em.getTransaction().begin();
@@ -24,5 +28,12 @@ public class MestoRepository {
 		em.getTransaction().begin();
 		em.remove(mesto);
 		em.getTransaction().commit();
+	}
+	
+	public static MestoRepository getInstance() {
+		if (instance==null) {
+			instance=new MestoRepository();
+		}
+		return instance;
 	}
 }

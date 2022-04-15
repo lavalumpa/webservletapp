@@ -6,7 +6,7 @@ import it.engineering.web.test.repository.UserRepository;
 public class UserRepositoryTest {
 	public static void main(String[] args) {
 //		User user1= new User("user1", "user1");
-		UserRepository userRepository=new UserRepository();
+		UserRepository userRepository=UserRepository.getInstance();
 //		userRepository.saveOrUpdate(user1);
 		System.out.println(userRepository.findByUsername("user1"));
 	}

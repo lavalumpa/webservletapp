@@ -1,9 +1,9 @@
-package it.engineering.web.test.domain.actionFactory;
+package it.engineering.web.test.actionfactory;
 
+import it.engineering.web.test.action.AbstractAction;
+import it.engineering.web.test.action.login.LoginGetAction;
+import it.engineering.web.test.action.login.LoginPostAction;
 import it.engineering.web.test.constants.Constants;
-import it.engineering.web.test.domain.action.AbstractAction;
-import it.engineering.web.test.domain.action.login.LoginGetAction;
-import it.engineering.web.test.domain.action.login.LoginPostAction;
 
 public class ActionFactory {
 

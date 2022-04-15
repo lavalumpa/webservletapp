@@ -1,4 +1,4 @@
-package it.engineering.web.test.domain.action;
+package it.engineering.web.test.action;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

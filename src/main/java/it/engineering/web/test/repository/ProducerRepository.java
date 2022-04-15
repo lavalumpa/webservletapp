@@ -8,6 +8,11 @@ import it.engineering.web.test.domain.Producer;
 import it.engineering.web.test.persistance.MyEntityManagerFactory;
 
 public class ProducerRepository {
+	private static ProducerRepository instance;
+	
+	private ProducerRepository() {
+		
+	}
 
 	public void saveOrUpdate(Producer Production) {
 		EntityManager em = MyEntityManagerFactory.getEntityManagerFactory().createEntityManager();
@@ -33,5 +38,12 @@ public class ProducerRepository {
 		EntityManager em = MyEntityManagerFactory.getEntityManagerFactory().createEntityManager();
 		String query="SELECT p FROM producer p  ";
 		return em.createQuery(query,Producer.class).getResultList();
+	}
+	
+	public static ProducerRepository getInstance() {
+		if (instance==null) {
+			instance = new ProducerRepository();
+		}
+		return instance;
 	}
 }
