@@ -6,4 +6,6 @@ public interface ProducerService {
 
 	String viewAllProducers(HttpServletRequest request);
 
+	void addProducer(HttpServletRequest request);
+
 }

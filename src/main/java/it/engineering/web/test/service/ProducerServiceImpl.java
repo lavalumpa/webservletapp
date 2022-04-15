@@ -27,6 +27,13 @@ public class ProducerServiceImpl implements ProducerService{
 	}
 	
 	public void addProducer(HttpServletRequest request) {
+		Long pib = Long.parseLong(request.getParameter("pib"));
+		Long matBroj = Long.parseLong(request.getParameter("maticniBroj"));
+		String adresa = request.getParameter("adresa");
+		Long mestoId = Long.parseLong(request.getParameter("mesto"));
+		Mesto mesto=mestoRepository.findById(mestoId);
+		Producer producer= new Producer(pib, matBroj, adresa, mesto);
+		producerRepository.saveOrUpdate(producer);
 		
 	}
 	public static ProducerServiceImpl getInstance() {
