@@ -6,7 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 
 @Entity(name = "producer")
 public class Producer {
@@ -16,7 +16,7 @@ public class Producer {
 	private Long pib;
 	private Long maticniBroj;
 	private String adresa;
-	@OneToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "Mesto")
 	private Mesto mesto;
 	

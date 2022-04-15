@@ -19,19 +19,20 @@
 	<div>
 		<form id="producer-form" method="post">
 		<label>Pib</label>
-		<input type="text" name="pib" value="pib">
+		<input type="text" name="pib" placeholder="pib">
 		<label>Maticni Broj</label>
-		<input type="text" name="maticniBroj" value="maticniBroj">
+		<input type="text" name="maticniBroj" placeholder="maticniBroj">
 		<label>Adresa</label>
-		<input type="text" name="adresa" value="adresa">
-		<input type="submit" value="Add">
-		</form>
+		<input type="text" name="adresa" placeholder="adresa">
 		<label>Mesto</label>
-		<select name="mesto" form="producer-form">
+		<select name="idMesta">
 			<c:forEach items="${mesta}" var="mesto">
 			<option value="${mesto.id}">${mesto.naziv}</option>
 			</c:forEach>
 		</select>
+		<input type="submit" value="Add">
+		</form>
+		
 	</div>
 </body>
 </html>
