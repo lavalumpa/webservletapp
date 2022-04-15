@@ -17,18 +17,19 @@
 <jsp:include page="/WEB-INF/pages/fragment/navigation.jsp"  flush="true"/>
 	<h2>Dobrodosli u home ${user.username}</h2>
 	<div>
-		<form id="producer-form">
+		<form id="producer-form" method="post">
 		<label>Pib</label>
 		<input type="text" name="pib" value="pib">
 		<label>Maticni Broj</label>
 		<input type="text" name="maticniBroj" value="maticniBroj">
 		<label>Adresa</label>
 		<input type="text" name="adresa" value="adresa">
-		<input type="submit">
+		<input type="submit" value="Add">
 		</form>
 		<label>Mesto</label>
-		<select form="producer-form">
-			<c:forEach items="${producers}" var="producer">
+		<select name="mesto" form="producer-form">
+			<c:forEach items="${mesta}" var="mesto">
+			<option value="${mesto.id}">${mesto.naziv}</option>
 			</c:forEach>
 		</select>
 	</div>

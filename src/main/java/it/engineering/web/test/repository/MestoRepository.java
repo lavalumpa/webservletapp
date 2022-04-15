@@ -1,5 +1,7 @@
 package it.engineering.web.test.repository;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 
 import it.engineering.web.test.domain.Mesto;
@@ -35,5 +37,12 @@ public class MestoRepository {
 			instance=new MestoRepository();
 		}
 		return instance;
+	}
+
+	public List<Mesto> findAll() {
+		EntityManager em = MyEntityManagerFactory.getEntityManagerFactory().createEntityManager();
+		String query="SELECT m FROM mesto m ";
+		List<Mesto> mesta = em.createQuery(query).getResultList();
+		return mesta;
 	}
 }

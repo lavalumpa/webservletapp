@@ -3,12 +3,14 @@ package it.engineering.web.test.action;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class AddProductGetAction extends AbstractAction {
+import it.engineering.web.test.constants.Constants;
+
+public class HomeGetAction extends AbstractAction {
 
 	@Override
 	public String executeRequest(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return Constants.PAGE_HOME;
 	}
 
 }
