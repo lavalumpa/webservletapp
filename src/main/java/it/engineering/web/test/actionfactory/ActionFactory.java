@@ -4,6 +4,7 @@ import it.engineering.web.test.action.AbstractAction;
 import it.engineering.web.test.action.HomeGetAction;
 import it.engineering.web.test.action.login.LoginGetAction;
 import it.engineering.web.test.action.login.LoginPostAction;
+import it.engineering.web.test.action.producer.ButtonProducersPageAction;
 import it.engineering.web.test.action.producer.GetAddProducerAction;
 import it.engineering.web.test.action.producer.PostAddProducerAction;
 import it.engineering.web.test.action.producer.ViewProducersAction;
@@ -32,6 +33,10 @@ public class ActionFactory {
 			if (method.equalsIgnoreCase("post")) {
 				action = new PostAddProducerAction();
 			}
+			break;
+		}
+		case Constants.PATH_PRODUCER_BUTTON:{
+			action = new ButtonProducersPageAction();
 			break;
 		}
 		case Constants.PATH_HOME:{

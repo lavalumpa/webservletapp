@@ -4,13 +4,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import it.engineering.web.test.action.AbstractAction;
+import it.engineering.web.test.service.ProducerService;
+import it.engineering.web.test.service.ProducerServiceImpl;
 
-public class EditProducerAction extends AbstractAction{
+public class ButtonProducersPageAction extends AbstractAction{
 
 	@Override
 	public String executeRequest(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return ProducerServiceImpl.getInstance().producersButtonViewForm(request);
 	}
 
 }

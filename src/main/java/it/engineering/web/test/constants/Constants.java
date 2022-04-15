@@ -13,4 +13,8 @@ public interface Constants {
 	
 	public static final String PATH_ADD_PRODUCER="/producer/add";
 	public static final String PAGE_ADD_PRODUCER ="/WEB-INF/pages/add-producer.jsp";
+	
+	public static final String PATH_PRODUCER_BUTTON="/producer";
+	public static final String PAGE_EDIT_PRODUCER ="/WEB-INF/pages/edit-producer.jsp";
+	public static final String PAGE_DELETE_PRODUCER ="/WEB-INF/pages/delete-producer.jsp";
 }

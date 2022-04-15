@@ -36,12 +36,6 @@ public class ProducerServiceImpl implements ProducerService{
 		producerRepository.saveOrUpdate(producer);
 		
 	}
-	public static ProducerServiceImpl getInstance() {
-		if (instance==null) {
-			instance = new ProducerServiceImpl();
-		}
-		return instance;
-	}
 
 
 	public String viewAddProducerPage(HttpServletRequest request) {
@@ -49,6 +43,31 @@ public class ProducerServiceImpl implements ProducerService{
 		request.setAttribute("mesta", mesta);
 		return Constants.PAGE_ADD_PRODUCER;
 	}
+
+
+	public String producersButtonViewForm(HttpServletRequest request) {
+		String button = request.getParameter("button");
+		String page ="";
+		if (button.equalsIgnoreCase("delete")) {
+			page = Constants.PAGE_DELETE_PRODUCER;
+		}
+		if (button.equalsIgnoreCase("edit")) {
+			request.setAttribute("mesta", mestoRepository.findAll());
+			page = Constants.PAGE_EDIT_PRODUCER;
+		}
+		System.out.println("page: " + page);
+		System.out.println("id: " + request.getParameterValues("id"));
+		Long id = Long.parseLong(request.getParameter("id"));
+		Producer producer =producerRepository.findById(id);
+		request.setAttribute("producer", producer);
+		return page;
+	}
 	
+	public static ProducerServiceImpl getInstance() {
+		if (instance==null) {
+			instance = new ProducerServiceImpl();
+		}
+		return instance;
+	}
 	
 }
