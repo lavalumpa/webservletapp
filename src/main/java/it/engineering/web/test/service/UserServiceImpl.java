@@ -1,4 +1,4 @@
-package it.engineering.web.test.action.service;
+package it.engineering.web.test.service;
 
 import java.util.List;
 
