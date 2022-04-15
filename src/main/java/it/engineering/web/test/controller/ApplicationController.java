@@ -3,8 +3,8 @@ package it.engineering.web.test.controller;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import it.engineering.web.test.domain.action.AbstractAction;
-import it.engineering.web.test.domain.actionFactory.ActionFactory;
+import it.engineering.web.test.action.AbstractAction;
+import it.engineering.web.test.actionfactory.ActionFactory;
 
 public class ApplicationController {
 

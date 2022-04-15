@@ -4,12 +4,13 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 
-
 import it.engineering.web.test.domain.User;
 import it.engineering.web.test.persistance.MyEntityManagerFactory;
 
 public class UserRepository {
-
+	private static UserRepository instance;
+	private UserRepository() {
+	}
 	public void saveOrUpdate(User user) {
 		EntityManager em = MyEntityManagerFactory.getEntityManagerFactory().createEntityManager();
 		em.getTransaction().begin();
@@ -37,5 +38,12 @@ public class UserRepository {
 		em.getTransaction().begin();
 		em.remove(user);
 		em.getTransaction().commit();
+	}
+	
+	public static UserRepository getInstance() {
+		if (instance==null) {
+			instance = new UserRepository();
+		}
+		return instance;
 	}
 }
