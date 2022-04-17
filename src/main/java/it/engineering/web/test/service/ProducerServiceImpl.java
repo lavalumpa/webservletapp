@@ -109,6 +109,8 @@ public class ProducerServiceImpl implements ProducerService{
 		return page;
 	}
 	
+	
+	
 	private Producer readProducer(HttpServletRequest request) {
 		String idString = request.getParameter("id");
 		Long id=null;
@@ -123,5 +125,5 @@ public class ProducerServiceImpl implements ProducerService{
 		Producer producer= new Producer(id,pib, matBroj, adresa, mesto);
 		return producer;
 	}
-	
+
 }

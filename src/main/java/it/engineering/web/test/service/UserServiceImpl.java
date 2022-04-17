@@ -10,18 +10,19 @@ import it.engineering.web.test.domain.User;
 import it.engineering.web.test.repository.ProducerRepository;
 import it.engineering.web.test.repository.UserRepository;
 
-public class UserServiceImpl {
-	private static UserServiceImpl instance;
+public class UserServiceImpl implements UserService {
+	private static UserService instance;
 	private UserRepository userRepository;
+	
 	private UserServiceImpl() {
 		userRepository=UserRepository.getInstance();
 	}
 	
 	
+	@Override
 	public String login(HttpServletRequest request, String username, String password) {
 		String page ="";
 		List<User> loggedUsers =(List<User> ) request.getServletContext().getAttribute("loggedUsers");
-		UserRepository userRepository= UserRepository.getInstance();
 		User userSaved= userRepository.findByUsername(username);
 		if (loggedUsers.contains(userSaved)) {
 			request.setAttribute("message", "User logged in");
@@ -39,21 +40,32 @@ public class UserServiceImpl {
 			page= Constants.PAGE_LOGIN;
 			return page;
 		}
-		request.getSession(true).setAttribute("user", userSaved);
 		loggedUsers.add(userSaved);
+		request.getSession(true).setAttribute("user", userSaved);
 		page = Constants.PAGE_HOME;
 		return page;
 	}
 
 
 	
-	
 
-	
-	public static UserServiceImpl getInstance() {
+	public static UserService getInstance() {
 		if (instance==null) {
 			instance = new UserServiceImpl();
 		}
 		return instance;
 	}
+
+
+	@Override
+	public String logout(HttpServletRequest request) {
+		User user = (User)request.getSession(true).getAttribute("user");
+		request.getSession(true).removeAttribute("user");
+		List<User> logged=(List<User>) request.getServletContext().getAttribute("loggedUsers");
+		logged.remove(user);
+		return Constants.PAGE_INDEX;
+	}
+	
+	
+	
 }
