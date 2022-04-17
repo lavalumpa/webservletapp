@@ -1,13 +1,19 @@
 package it.engineering.web.test.domain.testing;
 
-import it.engineering.web.test.domain.User;
+import javax.persistence.EntityManager;
+
+import it.engineering.web.test.persistance.MyEntityManagerFactory;
+import it.engineering.web.test.repository.UserRepository;
 import it.engineering.web.test.repository.UserRepositoryImpl;
 
 public class UserRepositoryTest {
 	public static void main(String[] args) {
 //		User user1= new User("user1", "user1");
-		UserRepositoryImpl userRepository=UserRepositoryImpl.getInstance();
+		UserRepository userRepository=UserRepositoryImpl.getInstance();
+		EntityManager em = MyEntityManagerFactory.getEntityManagerFactory().createEntityManager();
+		em.getTransaction().begin();
 //		userRepository.saveOrUpdate(user1);
-		System.out.println(userRepository.findByUsername("user1"));
+		System.out.println(userRepository.findByUsername("user1",em));
+		em.getTransaction().commit();
 	}
 }
