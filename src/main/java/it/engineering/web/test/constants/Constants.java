@@ -8,6 +8,8 @@ public interface Constants {
 	
 	public static final String PAGE_INDEX="/index.jsp";
 	
+	public static final String PAGE_ERROR="/WEB-INF/pages/bad-request.jsp";
+	
 	public static final String PATH_HOME ="/home";
 	public static final String PAGE_HOME ="/WEB-INF/pages/home.jsp";
 	

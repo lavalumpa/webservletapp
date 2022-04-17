@@ -36,7 +36,7 @@ main {
 	</header>
 
 	<main class="text-center">
-		<h2>Dobrodosli u home ${user.username}</h2>
+		<h2>Dobrodosli ${user.username}</h2>
 		<div class="product-links">
 			<div>
 				<a href="${producersView}">View all producers </a>

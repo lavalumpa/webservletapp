@@ -2,6 +2,7 @@ package it.engineering.web.test.actionfactory;
 
 import it.engineering.web.test.action.AbstractAction;
 import it.engineering.web.test.action.HomeGetAction;
+import it.engineering.web.test.action.error.BadRequestAction;
 import it.engineering.web.test.action.login.LoginGetAction;
 import it.engineering.web.test.action.login.LoginPostAction;
 import it.engineering.web.test.action.logout.LogoutAction;
@@ -64,6 +65,8 @@ public class ActionFactory {
 			break;
 		}
 		default:
+			System.err.println("Bad request");
+			action = new BadRequestAction();
 			break;
 		}
 		return action;
