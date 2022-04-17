@@ -26,7 +26,6 @@ public class StartupContext implements ServletContextListener {
      * @see ServletContextListener#contextDestroyed(ServletContextEvent)
      */
     public void contextDestroyed(ServletContextEvent sce)  { 
-         // TODO Auto-generated method stub
     }
 
 	/**
