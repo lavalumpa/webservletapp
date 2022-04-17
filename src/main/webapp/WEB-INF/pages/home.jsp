@@ -12,7 +12,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Index</title>
+<title>Home</title>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <style type="text/css">
@@ -30,7 +30,10 @@ main {
 </style>
 </head>
 <body class="bg-info">
-	<jsp:include page="/WEB-INF/pages/fragment/navigation.jsp" flush="true" />
+	<header>
+		<jsp:include page="/WEB-INF/pages/fragment/navigation.jsp"
+			flush="true" />
+	</header>
 
 	<main class="text-center">
 		<h2>Dobrodosli u home ${user.username}</h2>

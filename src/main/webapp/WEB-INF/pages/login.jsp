@@ -54,7 +54,7 @@
 			</div>
 
 			<div class="input-submit">
-				<input class="btn btn-primary"" type="submit" name="login" value="Prijavi se">
+				<input class="btn btn-primary" type="submit" name="login" value="Prijavi se">
 			</div>
 		</form>
 	</div>

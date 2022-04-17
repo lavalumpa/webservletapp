@@ -9,7 +9,7 @@
 <c:url value="/all/producer/all" var="producersView" />
 <c:url value="/all/logout" var="logout" />
 
-<div class="navbar bg-primary" style="height: 5rem;">
+<div class="navbar bg-primary" style="height: 5rem; ">
 
 	<nav >
 
