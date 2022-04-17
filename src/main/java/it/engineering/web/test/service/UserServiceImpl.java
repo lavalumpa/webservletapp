@@ -7,15 +7,16 @@ import javax.servlet.http.HttpServletRequest;
 import it.engineering.web.test.constants.Constants;
 import it.engineering.web.test.domain.Producer;
 import it.engineering.web.test.domain.User;
-import it.engineering.web.test.repository.ProducerRepository;
+import it.engineering.web.test.repository.ProducerRepositoryImpl;
 import it.engineering.web.test.repository.UserRepository;
+import it.engineering.web.test.repository.UserRepositoryImpl;
 
 public class UserServiceImpl implements UserService {
 	private static UserService instance;
 	private UserRepository userRepository;
 	
 	private UserServiceImpl() {
-		userRepository=UserRepository.getInstance();
+		userRepository=UserRepositoryImpl.getInstance();
 	}
 	
 	

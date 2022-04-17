@@ -6,7 +6,7 @@ import javax.servlet.http.HttpServletResponse;
 import it.engineering.web.test.action.AbstractAction;
 import it.engineering.web.test.constants.Constants;
 import it.engineering.web.test.domain.User;
-import it.engineering.web.test.repository.UserRepository;
+import it.engineering.web.test.repository.UserRepositoryImpl;
 
 public class LoginGetAction extends AbstractAction {
 

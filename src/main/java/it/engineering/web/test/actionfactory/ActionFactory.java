@@ -65,7 +65,6 @@ public class ActionFactory {
 			break;
 		}
 		default:
-			System.err.println("Bad request");
 			action = new BadRequestAction();
 			break;
 		}

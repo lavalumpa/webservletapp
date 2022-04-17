@@ -8,15 +8,17 @@ import it.engineering.web.test.constants.Constants;
 import it.engineering.web.test.domain.Mesto;
 import it.engineering.web.test.domain.Producer;
 import it.engineering.web.test.repository.MestoRepository;
+import it.engineering.web.test.repository.MestoRepositoryImpl;
 import it.engineering.web.test.repository.ProducerRepository;
+import it.engineering.web.test.repository.ProducerRepositoryImpl;
 
 public class ProducerServiceImpl implements ProducerService{
-	private static ProducerServiceImpl instance;
+	private static ProducerService instance;
 	private ProducerRepository producerRepository;
 	private MestoRepository mestoRepository;
 	 private ProducerServiceImpl() {
-		 producerRepository = ProducerRepository.getInstance();
-		 mestoRepository=MestoRepository.getInstance();
+		 producerRepository = ProducerRepositoryImpl.getInstance();
+		 mestoRepository=MestoRepositoryImpl.getInstance();
 	 }
 	
 	@Override
@@ -58,7 +60,7 @@ public class ProducerServiceImpl implements ProducerService{
 		return page;
 	}
 	
-	public static ProducerServiceImpl getInstance() {
+	public static ProducerService getInstance() {
 		if (instance==null) {
 			instance = new ProducerServiceImpl();
 		}

@@ -6,7 +6,7 @@ import it.engineering.web.test.repository.*;
 
 public class MestoRepositoryTest {
 	public static void main(String[] args) {
-		MestoRepository mestoRepository= MestoRepository.getInstance();
+		MestoRepositoryImpl mestoRepository= MestoRepositoryImpl.getInstance();
 		Mesto mesto1 = new Mesto(11000,"Beograd");
 		Mesto mesto3 = new Mesto(4L,13000," merge izmenjen");
 		mestoRepository.saveOrUpdate(mesto3);
