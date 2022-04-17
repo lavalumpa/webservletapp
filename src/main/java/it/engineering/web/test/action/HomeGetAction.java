@@ -9,7 +9,6 @@ public class HomeGetAction extends AbstractAction {
 
 	@Override
 	public String executeRequest(HttpServletRequest request, HttpServletResponse response) {
-		
 		return Constants.PAGE_HOME;
 	}
 

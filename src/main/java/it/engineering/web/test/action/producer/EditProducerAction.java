@@ -5,14 +5,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import it.engineering.web.test.action.AbstractAction;
 
-public class PostAddProducerAction extends AbstractAction{
-	
-	
-	
+public class EditProducerAction extends AbstractAction {
+
 	@Override
 	public String executeRequest(HttpServletRequest request, HttpServletResponse response) {
-		 getProducerService().addProducer(request);
-		 return getProducerService().viewAllProducers(request);
+		return getProducerService().editProducer(request);
 	}
 
 }
