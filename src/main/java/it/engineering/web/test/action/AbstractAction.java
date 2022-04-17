@@ -14,8 +14,8 @@ public abstract class AbstractAction {
 	private UserService userService;
 	
 	public AbstractAction() {
-		producerService = ProducerServiceImpl.getInstance();
-		userService = UserServiceImpl.getInstance();
+		producerService = new ProducerServiceImpl();
+		userService = new UserServiceImpl();
 	}
 	
 	protected ProducerService getProducerService() {
