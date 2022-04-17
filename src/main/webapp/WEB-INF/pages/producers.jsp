@@ -14,7 +14,7 @@
 <title>Index</title>
 </head>
 <body>
-<jsp:include page="/WEB-INF/pages/fragment/navigation.jsp"  flush="true"/>
+	<jsp:include page="/WEB-INF/pages/fragment/navigation.jsp" flush="true" />
 	<h2>Dobrodosli u home ${user.username}</h2>
 	<div>
 		<table>
@@ -35,16 +35,21 @@
 					<td>${producer.mesto.pttBroj}</td>
 					<td>${producer.mesto.naziv}</td>
 					<td>
-						<form action="/all/producer?id=${producer.id}">
-							<input type="submit"  name="edit" value="edit"> <input
-								type="submit" name="delete" value="delete">
-						</form>
-					</td>
+					<c:url var="buttonLink" value="/all/producer">
+							<c:param name="id" value="${producer.id}"></c:param>
+						</c:url>
+
+						<form action="${buttonLink}" method="post">
+							<input type="submit" name="button" value="edit"> <input
+								type="submit" name="button" value="delete">
+						</form></td>
 				</tr>
 			</c:forEach>
 		</table>
 		<div>
-			<p> Click <a href="${producerAdd}">here</a> to add product </p>
+			<p>
+				Click <a href="${producerAdd}">here</a> to add product
+			</p>
 		</div>
 	</div>
 </body>

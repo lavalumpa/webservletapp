@@ -8,4 +8,16 @@ public interface ProducerService {
 
 	void addProducer(HttpServletRequest request);
 
+	String editConfirmPressed(HttpServletRequest request);
+
+	String deleteConfirmPressed(HttpServletRequest request);
+
+	String viewAddProducerPage(HttpServletRequest request);
+
+	String producersButtonViewForm(HttpServletRequest request);
+
+	String editProducer(HttpServletRequest request);
+
+	
+
 }

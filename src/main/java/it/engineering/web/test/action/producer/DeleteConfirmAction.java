@@ -5,11 +5,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import it.engineering.web.test.action.AbstractAction;
 
-public class GetAddProducerAction extends AbstractAction{
+public class DeleteConfirmAction extends AbstractAction {
 
 	@Override
-	public String executeRequest(HttpServletRequest request, HttpServletResponse response) {
-		return getProducerService().viewAddProducerPage(request);
+	public String executeRequest(HttpServletRequest request, HttpServletResponse response) {	
+		return getProducerService().deleteConfirmPressed(request);
 	}
- 
+
 }

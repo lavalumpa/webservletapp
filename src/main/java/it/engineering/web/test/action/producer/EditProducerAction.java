@@ -5,12 +5,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import it.engineering.web.test.action.AbstractAction;
 
-public class EditProducerAction extends AbstractAction{
+public class EditProducerAction extends AbstractAction {
 
 	@Override
 	public String executeRequest(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
-		return null;
+		return getProducerService().editProducer(request);
 	}
 
 }
