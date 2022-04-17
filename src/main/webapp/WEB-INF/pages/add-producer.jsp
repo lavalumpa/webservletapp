@@ -63,7 +63,7 @@ main {
 					</select>
 				</div>
 				<div class="input-submit">
-					<input lass="btn btn-primary" type="submit" value="Add">
+					<input class="btn btn-primary" type="submit" value="Add">
 				</div>
 			</form>
 		</div>
