@@ -4,6 +4,7 @@ import it.engineering.web.test.action.AbstractAction;
 import it.engineering.web.test.action.HomeGetAction;
 import it.engineering.web.test.action.login.LoginGetAction;
 import it.engineering.web.test.action.login.LoginPostAction;
+import it.engineering.web.test.action.logout.LogoutAction;
 import it.engineering.web.test.action.producer.ButtonProducersPageAction;
 import it.engineering.web.test.action.producer.DeleteConfirmAction;
 import it.engineering.web.test.action.producer.EditConfirmProducerAction;
@@ -56,6 +57,10 @@ public class ActionFactory {
 		}
 		case Constants.PATH_DELETE_CONFIRM:{	
 			action = new DeleteConfirmAction();
+			break;
+		}
+		case Constants.PATH_LOGOUT:{	
+			action = new LogoutAction();
 			break;
 		}
 		default:
