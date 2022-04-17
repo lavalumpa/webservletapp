@@ -5,7 +5,6 @@ import java.util.List;
 import javax.persistence.EntityManager;
 
 import it.engineering.web.test.domain.Mesto;
-import it.engineering.web.test.persistance.MyEntityManagerFactory;
 
 public class MestoRepositoryImpl implements MestoRepository {
 	private static MestoRepository instance;
@@ -14,26 +13,20 @@ public class MestoRepositoryImpl implements MestoRepository {
 	};
 
 	@Override
-	public void saveOrUpdate(Mesto mesto) {
-		EntityManager em = MyEntityManagerFactory.getEntityManagerFactory().createEntityManager();
-		em.getTransaction().begin();
+	public void saveOrUpdate(Mesto mesto,EntityManager em) {
 		em.merge(mesto);
-		em.getTransaction().commit();
 	}
 
 	@Override
-	public Mesto findById(Long id) {
-		EntityManager em = MyEntityManagerFactory.getEntityManagerFactory().createEntityManager();
+	public Mesto findById(Long id, EntityManager em) {
+		
 		return em.find(Mesto.class, id);
 	}
 
 	@Override
-	public void deleteById(Long id) {
-		EntityManager em = MyEntityManagerFactory.getEntityManagerFactory().createEntityManager();
+	public void deleteById(Long id, EntityManager em) {
 		Mesto mesto = em.find(Mesto.class, id);
-		em.getTransaction().begin();
 		em.remove(mesto);
-		em.getTransaction().commit();
 	}
 
 	public static MestoRepository getInstance() {
@@ -44,8 +37,7 @@ public class MestoRepositoryImpl implements MestoRepository {
 	}
 
 	@Override
-	public List<Mesto> findAll() {
-		EntityManager em = MyEntityManagerFactory.getEntityManagerFactory().createEntityManager();
+	public List<Mesto> findAll(EntityManager em) {
 		String query = "SELECT m FROM mesto m ";
 		List<Mesto> mesta = em.createQuery(query).getResultList();
 		return mesta;

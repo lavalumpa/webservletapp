@@ -12,23 +12,17 @@ public class UserRepositoryImpl implements UserRepository {
 	
 	
 	@Override
-	public void saveOrUpdate(User user) {
-		EntityManager em = MyEntityManagerFactory.getEntityManagerFactory().createEntityManager();
-		em.getTransaction().begin();
+	public void saveOrUpdate(User user, EntityManager em) {
 		em.merge(user);
-		System.out.println(user);
-		em.getTransaction().commit();
 	}
 
 	@Override
-	public User findById(Long id) {
-		EntityManager em = MyEntityManagerFactory.getEntityManagerFactory().createEntityManager();
+	public User findById(Long id, EntityManager em) {
 		return em.find(User.class, id);
 	}
 	
 	@Override
-	public User findByUsername(String username) {
-		EntityManager em = MyEntityManagerFactory.getEntityManagerFactory().createEntityManager();
+	public User findByUsername(String username, EntityManager em) {
 		String query="SELECT u FROM user u WHERE u.username=:user1";
 		List<User> users=em.createQuery(query,User.class).setParameter("user1", username).getResultList();
 		User user = users.size()==0? null : users.get(0);
@@ -36,12 +30,9 @@ public class UserRepositoryImpl implements UserRepository {
 	}
 
 	@Override
-	public void delete(Long id) {
-		EntityManager em = MyEntityManagerFactory.getEntityManagerFactory().createEntityManager();
+	public void delete(Long id, EntityManager em) {
 		User user = em.find(User.class, id);
-		em.getTransaction().begin();
 		em.remove(user);
-		em.getTransaction().commit();
 	}
 	
 	public static UserRepository getInstance() {
