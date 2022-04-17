@@ -37,10 +37,16 @@ main {
 	justify-content: center;
 }
 
+
+.form{
+	margin : 0 2rem 0 2rem;
+}
+
 .btn{
-	
-	margin: 1rem 2rem 0 2rem;
+	padding: .5rem 1.3rem;
+	margin : 1.2rem 2rem 0 2rem;
 	font-size: 1.3rem;
+	width: 10rem;
 }
 </style>
 </head>
@@ -50,7 +56,7 @@ main {
 			flush="true" />
 	</header>
 
-	<div>
+	<main>
 		<form action="${editConfirm}" id="producer-form" method="post">
 			<div class="text-center">
 				<h2>Potvrdite izmene</h2>
@@ -102,13 +108,13 @@ main {
 						readonly="readonly">
 				</div>
 			</div>
-			<div class="text-center">
-				<input class="btn btn-primary" type="submit" value="Confirm edit"
+			<div class="buttons text-center">
+				<input class="btn btn-primary " type="submit" value="Confirm edit"
 					name="button"> <input class="btn btn-primary" type="submit"
 					value="Discard" name="button">
 			</div>
 		</form>
 
-	</div>
+	</main>
 </body>
 </html>
