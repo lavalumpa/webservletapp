@@ -39,7 +39,7 @@ public class UserServiceImpl {
 			page= Constants.PAGE_LOGIN;
 			return page;
 		}
-		request.setAttribute("user", userSaved);
+		request.getSession(true).setAttribute("user", userSaved);
 		loggedUsers.add(userSaved);
 		page = Constants.PAGE_HOME;
 		return page;

@@ -4,23 +4,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import it.engineering.web.test.action.AbstractAction;
-import it.engineering.web.test.service.ProducerService;
-import it.engineering.web.test.service.ProducerServiceImpl;
+import it.engineering.web.test.constants.Constants;
 
 public class ViewProducersAction extends AbstractAction{
-	
-	private ProducerService producerService;
-	
-	
-	public ViewProducersAction() {
-		producerService=ProducerServiceImpl.getInstance();
-	}
 	
 	
 	@Override
 	public String executeRequest(HttpServletRequest request, HttpServletResponse response) {
-		String page = producerService.viewAllProducers(request);
-		return page;
+		if (request.getSession(true).getAttribute("user")==null) {
+			return Constants.PAGE_LOGIN;
+		}
+		return getProducerService().viewAllProducers(request);
 	}
 
 	
