@@ -8,11 +8,11 @@ import it.engineering.web.test.domain.Producer;
 
 public interface ProducerRepository {
 
-	void saveOrUpdate(Producer Production, EntityManager em);
+	void saveOrUpdate(Producer Production);
 
-	Producer findById(Long id, EntityManager em);
+	Producer findById(Long id);
 	
-	void deleteById(Long id, EntityManager em);
+	void deleteById(Long id);
 
-	List<Producer> findAll(EntityManager em);
+	List<Producer> findAll();
 }

@@ -7,37 +7,33 @@ import javax.persistence.EntityManager;
 import it.engineering.web.test.domain.Mesto;
 
 public class MestoRepositoryImpl implements MestoRepository {
-	private static MestoRepository instance;
+	private EntityManager em;
 
-	private MestoRepositoryImpl() {
+	public MestoRepositoryImpl(EntityManager em) {
+		this.em=em;
 	};
 
 	@Override
-	public void saveOrUpdate(Mesto mesto,EntityManager em) {
+	public void saveOrUpdate(Mesto mesto) {
 		em.merge(mesto);
 	}
 
 	@Override
-	public Mesto findById(Long id, EntityManager em) {
+	public Mesto findById(Long id) {
 		
 		return em.find(Mesto.class, id);
 	}
 
 	@Override
-	public void deleteById(Long id, EntityManager em) {
+	public void deleteById(Long id) {
 		Mesto mesto = em.find(Mesto.class, id);
 		em.remove(mesto);
 	}
 
-	public static MestoRepository getInstance() {
-		if (instance == null) {
-			instance = new MestoRepositoryImpl();
-		}
-		return instance;
-	}
+	
 
 	@Override
-	public List<Mesto> findAll(EntityManager em) {
+	public List<Mesto> findAll() {
 		String query = "SELECT m FROM mesto m ";
 		List<Mesto> mesta = em.createQuery(query).getResultList();
 		return mesta;

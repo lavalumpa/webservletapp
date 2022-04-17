@@ -7,41 +7,35 @@ import javax.persistence.EntityManager;
 import it.engineering.web.test.domain.Producer;
 
 public class ProducerRepositoryImpl implements ProducerRepository {
-	private static ProducerRepository instance;
+	private EntityManager em;
 	
-	private ProducerRepositoryImpl() {
-		
+	public ProducerRepositoryImpl(EntityManager em) {
+		this.em=em;
 	}
 
 	@Override
-	public void saveOrUpdate(Producer producer, EntityManager em) {
+	public void saveOrUpdate(Producer producer) {
 		em.merge(producer);
 
 	}
 
 	@Override
-	public Producer findById(Long id, EntityManager em) {
-	
+	public Producer findById(Long id) {
 		return em.find(Producer.class, id);
 	}
 	
 	@Override
-	public void deleteById(Long id, EntityManager em) {
+	public void deleteById(Long id) {
 		Producer production = em.find(Producer.class, id);
 		em.remove(production);
 		
 	}
 	
 	@Override
-	public List<Producer> findAll(EntityManager em){
+	public List<Producer> findAll(){
 		String query="SELECT p FROM producer p  ";
 		return em.createQuery(query,Producer.class).getResultList();
 	}
 	
-	public static ProducerRepository getInstance() {
-		if (instance==null) {
-			instance = new ProducerRepositoryImpl();
-		}
-		return instance;
-	}
+	
 }

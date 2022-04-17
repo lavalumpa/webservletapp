@@ -3,7 +3,6 @@ package it.engineering.web.test.service;
 import java.util.List;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
 import javax.servlet.http.HttpServletRequest;
 
 import it.engineering.web.test.constants.Constants;
@@ -13,21 +12,19 @@ import it.engineering.web.test.repository.UserRepository;
 import it.engineering.web.test.repository.UserRepositoryImpl;
 
 public class UserServiceImpl implements UserService {
-	private static UserService instance;
 	private UserRepository userRepository;
-	private EntityManagerFactory entityManagerFactory;
+	private EntityManager em;
 
-	private UserServiceImpl() {
-		userRepository = UserRepositoryImpl.getInstance();
-		entityManagerFactory = MyEntityManagerFactory.getEntityManagerFactory();
+	public UserServiceImpl() {
+		em = MyEntityManagerFactory.getEntityManagerFactory().createEntityManager();
+		userRepository = new UserRepositoryImpl(em);
 	}
 
 	@Override
 	public String login(HttpServletRequest request, String username, String password) {
 		String page = "";
 		List<User> loggedUsers = (List<User>) request.getServletContext().getAttribute("loggedUsers");
-		EntityManager em = entityManagerFactory.createEntityManager();
-		User userSaved = userRepository.findByUsername(username, em);
+		User userSaved = userRepository.findByUsername(username);
 		if (loggedUsers.contains(userSaved)) {
 			request.setAttribute("message", "User logged in");
 			page = Constants.PAGE_LOGIN;
@@ -50,12 +47,7 @@ public class UserServiceImpl implements UserService {
 		return page;
 	}
 
-	public static UserService getInstance() {
-		if (instance == null) {
-			instance = new UserServiceImpl();
-		}
-		return instance;
-	}
+	
 
 	@Override
 	public String logout(HttpServletRequest request) {
