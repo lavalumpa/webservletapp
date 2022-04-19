@@ -10,19 +10,19 @@ public class Mesto {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private Integer pttBroj;
+	private String pttBroj;
 	private String naziv;
 	
 	
 	public Mesto() {
 	}
 	
-	public Mesto( Integer pttBroj, String naziv) {
+	public Mesto( String pttBroj, String naziv) {
 		super();
 		this.pttBroj = pttBroj;
 		this.naziv = naziv;
 	}
-	public Mesto(Long id, Integer pttBroj, String naziv) {
+	public Mesto(Long id, String pttBroj, String naziv) {
 		super();
 		this.id = id;
 		this.pttBroj = pttBroj;
@@ -35,10 +35,10 @@ public class Mesto {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public Integer getPttBroj() {
+	public String getPttBroj() {
 		return pttBroj;
 	}
-	public void setPttBroj(Integer pttBroj) {
+	public void setPttBroj(String pttBroj) {
 		this.pttBroj = pttBroj;
 	}
 	public String getNaziv() {
@@ -89,6 +89,8 @@ public class Mesto {
 			return false;
 		return true;
 	}
+
+
 	
 	
 	
