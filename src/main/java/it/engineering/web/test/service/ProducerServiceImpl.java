@@ -28,18 +28,23 @@ public class ProducerServiceImpl implements ProducerService{
 	
 	@Override
 	public String viewAllProducers(HttpServletRequest request) {
-		
 		List<Producer> producers =producerRepository.findAll();
 		request.setAttribute("producers", producers);
+		em.close();
 		return Constants.PAGE_ALL_PRODUCERS;
 	}
+	
+	
 	@Override
-	public void addProducer(HttpServletRequest request) {
+	public String addProducer(HttpServletRequest request) {
 		em.getTransaction().begin();
 		Producer producer = readProducer(request,em);
 		producerRepository.saveOrUpdate(producer);
 		em.getTransaction().commit();
-		
+		List<Producer> producers =producerRepository.findAll();
+		request.setAttribute("producers", producers);
+		em.close();
+		return Constants.PAGE_ALL_PRODUCERS;
 	}
 
 
@@ -65,6 +70,7 @@ public class ProducerServiceImpl implements ProducerService{
 		Long id = Long.parseLong(request.getParameter("id"));
 		Producer producer =producerRepository.findById(id);
 		request.setAttribute("producer", producer);
+		em.close();
 		return page;
 	}
 	
@@ -86,6 +92,7 @@ public class ProducerServiceImpl implements ProducerService{
 			request.setAttribute("newProducer", newProducer);
 			page=Constants.PAGE_EDIT_PRODUCER_CONFIRM;
 		}
+		em.close();
 		return page;
 	}
 	
@@ -101,6 +108,7 @@ public class ProducerServiceImpl implements ProducerService{
 			em.getTransaction().commit();
 		}
 		request.setAttribute("producers", producerRepository.findAll());
+		em.close();
 		return page;
 	}
 	
@@ -115,6 +123,7 @@ public class ProducerServiceImpl implements ProducerService{
 			em.getTransaction().commit();
 		}
 		request.setAttribute("producers", producerRepository.findAll());
+		em.close();
 		return page;
 	}
 	

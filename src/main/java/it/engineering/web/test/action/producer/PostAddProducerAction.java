@@ -15,8 +15,8 @@ public class PostAddProducerAction extends AbstractAction{
 		if (request.getSession(true).getAttribute("user")==null) {
 			return Constants.PAGE_LOGIN;
 		}
-		 getProducerService().addProducer(request);
-		 return getProducerService().viewAllProducers(request);
+		 return getProducerService().addProducer(request);
+		
 	}
 
 }

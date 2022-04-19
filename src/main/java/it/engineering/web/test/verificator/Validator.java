@@ -1,6 +1,6 @@
 package it.engineering.web.test.verificator;
 
-public class Verificator {
+public class Validator {
 
 	public static boolean isAllDigitString(String data) {
 		for (char c : data.toCharArray()) {
@@ -22,4 +22,6 @@ public class Verificator {
 	public static boolean isEmpty(String data) {
 		return data.length() == 0;
 	}
+	
+	
 }

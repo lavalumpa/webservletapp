@@ -44,6 +44,7 @@ public class UserServiceImpl implements UserService {
 		loggedUsers.add(userSaved);
 		request.getSession(true).setAttribute("user", userSaved);
 		page = Constants.PAGE_HOME;
+		em.close();
 		return page;
 	}
 
@@ -55,6 +56,7 @@ public class UserServiceImpl implements UserService {
 		request.getSession(true).removeAttribute("user");
 		List<User> logged = (List<User>) request.getServletContext().getAttribute("loggedUsers");
 		logged.remove(user);
+		em.close();
 		return Constants.PAGE_INDEX;
 	}
 

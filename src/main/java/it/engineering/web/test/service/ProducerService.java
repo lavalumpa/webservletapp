@@ -6,7 +6,7 @@ public interface ProducerService {
 
 	String viewAllProducers(HttpServletRequest request);
 
-	void addProducer(HttpServletRequest request);
+	String addProducer(HttpServletRequest request);
 
 	String editConfirmPressed(HttpServletRequest request);
 
