@@ -126,8 +126,8 @@ public class ProducerServiceImpl implements ProducerService{
 		if (idString!=null) {
 			id=Long.parseLong(idString);
 		}
-		Long pib = Long.parseLong(request.getParameter("pib"));
-		Long matBroj = Long.parseLong(request.getParameter("maticniBroj"));
+		String pib =request.getParameter("pib");
+		String matBroj =request.getParameter("maticniBroj");
 		String adresa = request.getParameter("adresa");
 		Long mestoId = Long.parseLong(request.getParameter("idMesta"));
 		Mesto mesto=mestoRepository.findById(mestoId);

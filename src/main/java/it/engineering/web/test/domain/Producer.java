@@ -13,8 +13,8 @@ public class Producer {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private Long pib;
-	private Long maticniBroj;
+	private String pib;
+	private String maticniBroj;
 	private String adresa;
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "Mesto")
@@ -23,7 +23,7 @@ public class Producer {
 	public Producer() {
 	}
 	
-	public Producer(Long pib, Long maticniBroj, String adresa, Mesto mesto) {
+	public Producer(String pib, String maticniBroj, String adresa, Mesto mesto) {
 		super();
 		this.pib = pib;
 		this.maticniBroj = maticniBroj;
@@ -31,7 +31,7 @@ public class Producer {
 		this.mesto = mesto;
 	}
 
-	public Producer(Long id, Long pib, Long maticniBroj, String adresa, Mesto mesto) {
+	public Producer(Long id, String pib, String maticniBroj, String adresa, Mesto mesto) {
 		super();
 		this.id = id;
 		this.pib = pib;
@@ -48,19 +48,19 @@ public class Producer {
 		this.id = id;
 	}
 
-	public Long getPib() {
+	public String getPib() {
 		return pib;
 	}
 
-	public void setPib(Long pib) {
+	public void setPib(String pib) {
 		this.pib = pib;
 	}
 
-	public Long getMaticniBroj() {
+	public String getMaticniBroj() {
 		return maticniBroj;
 	}
 
-	public void setMaticniBroj(Long maticniBroj) {
+	public void setMaticniBroj(String maticniBroj) {
 		this.maticniBroj = maticniBroj;
 	}
 
@@ -134,7 +134,7 @@ public class Producer {
 			return false;
 		return true;
 	}
-	
-	
+
+
 	
 }

@@ -13,12 +13,11 @@ public class ProducerRepositoryTest {
 		EntityManager em = MyEntityManagerFactory.getEntityManagerFactory().createEntityManager();
 		ProducerRepository prodRepository =new ProducerRepositoryImpl(em);
 		em.getTransaction().begin();
-//		System.out.println(prodRepository.findById(1L));
-//		Mesto mesto3 = new Mesto(4L,13000,"Beograd merge izmenjen");
-		MestoRepository mestoRepository = new MestoRepositoryImpl(em);
-//		mestoRepository.deleteById(mesto3.getId());
+		System.out.println(prodRepository.findById(1L));
+//		Mesto mesto3 = new Mesto(4L,"13000","Beograd merge izmenjen");
+//		MestoRepository mestoRepository = new MestoRepositoryImpl(em);
 //		Mesto mesto = mestoRepository.findById(8L);
-//		Producer producer = new Producer(5161671L, 518691068L, "Ponata", mesto);
+//		Producer producer = new Producer("12345678", "123456789", "Ponata", mesto);
 //		prodRepository.saveOrUpdate(producer);
 		System.out.println(prodRepository.findAll());
 		em.getTransaction().commit();
