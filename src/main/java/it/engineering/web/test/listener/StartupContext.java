@@ -7,6 +7,10 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+import it.engineering.web.test.config.BeanConfiguration;
 import it.engineering.web.test.domain.User;
 
 /**
@@ -34,6 +38,8 @@ public class StartupContext implements ServletContextListener {
     public void contextInitialized(ServletContextEvent sce)  { 
     	ServletContext servletContext=sce.getServletContext();
     	List<User> users = new ArrayList<>();
+    	ApplicationContext applicationContext = new AnnotationConfigApplicationContext(BeanConfiguration.class);
+    	servletContext.setAttribute("application-context", applicationContext);
     	servletContext.setAttribute("loggedUsers", users);
     }
 	

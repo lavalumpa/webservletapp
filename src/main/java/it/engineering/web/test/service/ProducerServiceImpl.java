@@ -5,6 +5,8 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.stereotype.Component;
+
 import it.engineering.web.test.constants.Constants;
 import it.engineering.web.test.domain.Mesto;
 import it.engineering.web.test.domain.Producer;
@@ -14,6 +16,7 @@ import it.engineering.web.test.repository.MestoRepositoryImpl;
 import it.engineering.web.test.repository.ProducerRepository;
 import it.engineering.web.test.repository.ProducerRepositoryImpl;
 
+@Component
 public class ProducerServiceImpl implements ProducerService{
 	
 	private ProducerRepository producerRepository;

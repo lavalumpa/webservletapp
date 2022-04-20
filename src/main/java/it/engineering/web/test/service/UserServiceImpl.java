@@ -5,12 +5,15 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.stereotype.Component;
+
 import it.engineering.web.test.constants.Constants;
 import it.engineering.web.test.domain.User;
 import it.engineering.web.test.persistance.MyEntityManagerFactory;
 import it.engineering.web.test.repository.UserRepository;
 import it.engineering.web.test.repository.UserRepositoryImpl;
 
+@Component
 public class UserServiceImpl implements UserService {
 	private UserRepository userRepository;
 	private EntityManager em;

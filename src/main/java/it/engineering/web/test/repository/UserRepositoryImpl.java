@@ -5,10 +5,8 @@ import java.util.List;
 import javax.persistence.EntityManager;
 
 import it.engineering.web.test.domain.User;
-import it.engineering.web.test.persistance.MyEntityManagerFactory;
 
 public class UserRepositoryImpl implements UserRepository {
-	private static UserRepository instance;
 	private EntityManager em;
 	
 	
