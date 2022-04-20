@@ -10,17 +10,17 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
 import it.engineering.web.test.persistance.MyEntityManagerFactory;
 
+@Configuration
 @ComponentScan(basePackages = {
 		"it.engineering.web.test"
 })
-@Configuration
 public class BeanConfiguration {
 
-	@Bean
-	public EntityManager entityManager() {
-		return MyEntityManagerFactory.getEntityManagerFactory().createEntityManager();
-	}
-	
+//	@Bean
+//	public EntityManager entityManager() {
+//		return MyEntityManagerFactory.getEntityManagerFactory().createEntityManager();
+//	}
+//	
 	@Bean
 	public JdbcTemplate JdbcTemplate() {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();

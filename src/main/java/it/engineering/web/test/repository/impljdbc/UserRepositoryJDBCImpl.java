@@ -31,8 +31,10 @@ public class UserRepositoryJDBCImpl implements UserRepository{
 
 	@Override
 	public User findByUsername(String username) {
-		String query = "select * from user where username= '"+username+"'";
-		User user =jdbcTemplate.query(query, new UserMapper()).get(0);
+		System.out.println("jdbc repository called");
+		String query = "select * from user where username=?";
+		User user =jdbcTemplate.queryForObject(query, new UserMapper(), username);
+		
 		return user;
 	}
 
