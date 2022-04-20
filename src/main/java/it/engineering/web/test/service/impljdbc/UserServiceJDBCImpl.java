@@ -1,28 +1,26 @@
-package it.engineering.web.test.service;
+package it.engineering.web.test.service.impljdbc;
 
 import java.util.List;
 
-import javax.persistence.EntityManager;
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import it.engineering.web.test.constants.Constants;
 import it.engineering.web.test.domain.User;
-import it.engineering.web.test.persistance.MyEntityManagerFactory;
 import it.engineering.web.test.repository.UserRepository;
-import it.engineering.web.test.repository.UserRepositoryImpl;
+import it.engineering.web.test.service.UserService;
 
+@Component
+public class UserServiceJDBCImpl implements UserService {
 
-public class UserServiceImpl implements UserService {
+	@Qualifier("userRepositoryJDBCImpl")
+	@Autowired
 	private UserRepository userRepository;
-	private EntityManager em;
-
-	public UserServiceImpl() {
-		em = MyEntityManagerFactory.getEntityManagerFactory().createEntityManager();
-		userRepository = new UserRepositoryImpl(em);
-	}
-
+	
+	
 	@Override
 	public String login(HttpServletRequest request, String username, String password) {
 		String page = "";
@@ -47,11 +45,8 @@ public class UserServiceImpl implements UserService {
 		loggedUsers.add(userSaved);
 		request.getSession(true).setAttribute("user", userSaved);
 		page = Constants.PAGE_HOME;
-		em.close();
 		return page;
 	}
-
-	
 
 	@Override
 	public String logout(HttpServletRequest request) {
@@ -59,7 +54,6 @@ public class UserServiceImpl implements UserService {
 		request.getSession(true).removeAttribute("user");
 		List<User> logged = (List<User>) request.getServletContext().getAttribute("loggedUsers");
 		logged.remove(user);
-		em.close();
 		return Constants.PAGE_INDEX;
 	}
 
