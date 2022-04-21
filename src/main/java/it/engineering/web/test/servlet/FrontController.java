@@ -13,6 +13,7 @@ import org.springframework.beans.factory.config.AutowireCapableBeanFactory;
 import org.springframework.context.ApplicationContext;
 
 import it.engineering.web.test.controller.ApplicationController;
+import it.engineering.web.test.view.ViewResolver;
 
 /**
  * Servlet implementation class FrontController
@@ -21,6 +22,8 @@ public class FrontController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	@Autowired
 	private ApplicationController applicationController;
+	@Autowired
+	private ViewResolver viewResolver;
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -58,8 +61,9 @@ public class FrontController extends HttpServlet {
 		processRequest(request, response);
 	}
 	private void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String page = applicationController.processRequest(request, response);
-		request.getRequestDispatcher(page).forward(request, response);
+		String view = applicationController.processRequest(request, response);
+		//na osnovu pogleda vrati konkretnu stranicu korisniku
+		request.getRequestDispatcher(viewResolver.getPage(view)).forward(request, response);
 	}
 
 }
