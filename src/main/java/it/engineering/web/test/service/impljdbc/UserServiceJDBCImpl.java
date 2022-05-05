@@ -13,7 +13,6 @@ import it.engineering.web.test.domain.User;
 import it.engineering.web.test.repository.UserRepository;
 import it.engineering.web.test.service.UserService;
 
-@Component
 public class UserServiceJDBCImpl implements UserService {
 
 	@Qualifier("userRepositoryJDBCImpl")

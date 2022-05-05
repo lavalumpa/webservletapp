@@ -3,15 +3,19 @@ package it.engineering.web.test.repository;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import it.engineering.web.test.domain.Producer;
 
+@Repository
 public class ProducerRepositoryImpl implements ProducerRepository {
+	
+	@PersistenceContext
 	private EntityManager em;
 	
-	public ProducerRepositoryImpl(EntityManager em) {
-		this.em=em;
-	}
 
 	@Override
 	public void saveOrUpdate(Producer producer) {
@@ -25,6 +29,7 @@ public class ProducerRepositoryImpl implements ProducerRepository {
 	}
 	
 	@Override
+	@Transactional
 	public void deleteById(Long id) {
 		Producer production = em.find(Producer.class, id);
 		em.remove(production);

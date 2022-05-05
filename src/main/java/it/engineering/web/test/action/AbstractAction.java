@@ -3,6 +3,7 @@ package it.engineering.web.test.action;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import it.engineering.web.test.service.ProducerService;

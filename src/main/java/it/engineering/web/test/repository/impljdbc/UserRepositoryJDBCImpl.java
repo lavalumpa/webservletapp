@@ -11,10 +11,8 @@ import org.springframework.stereotype.Component;
 import it.engineering.web.test.domain.User;
 import it.engineering.web.test.repository.UserRepository;
 
-@Component
 public class UserRepositoryJDBCImpl implements UserRepository{
 
-	@Autowired
 	private JdbcTemplate jdbcTemplate;
 	
 	@Override

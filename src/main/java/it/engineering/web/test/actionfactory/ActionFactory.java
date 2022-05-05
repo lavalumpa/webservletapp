@@ -12,6 +12,7 @@ import it.engineering.web.test.action.logout.LogoutAction;
 import it.engineering.web.test.action.producer.ButtonProducersPageAction;
 import it.engineering.web.test.action.producer.DeleteConfirmAction;
 import it.engineering.web.test.action.producer.EditConfirmProducerAction;
+import it.engineering.web.test.action.producer.EditProducerAction;
 import it.engineering.web.test.action.producer.GetAddProducerAction;
 import it.engineering.web.test.action.producer.PostAddProducerAction;
 import it.engineering.web.test.action.producer.ViewProducersAction;
@@ -27,6 +28,7 @@ public class ActionFactory {
 	private LogoutAction logoutAction;
 	private ButtonProducersPageAction buttonProducersPageAction;
 	private DeleteConfirmAction deleteConfirmAction;
+	private EditProducerAction editProducerAction;
 	private EditConfirmProducerAction editConfirmProducerAction;
 	private GetAddProducerAction getAddProducerAction;
 	private PostAddProducerAction postAddProducerAction;
@@ -39,7 +41,7 @@ public class ActionFactory {
 			ButtonProducersPageAction buttonProducersPageAction, DeleteConfirmAction deleteConfirmAction,
 			EditConfirmProducerAction editConfirmProducerAction, GetAddProducerAction getAddProducerAction,
 			PostAddProducerAction postAddProducerAction, ViewProducersAction viewProducersAction,
-			HomeGetAction homeGetAction) {
+			HomeGetAction homeGetAction, EditProducerAction editProducerAction) {
 		super();
 		this.badRequestAction = badRequestAction;
 		this.loginGetAction = loginGetAction;
@@ -52,6 +54,7 @@ public class ActionFactory {
 		this.postAddProducerAction = postAddProducerAction;
 		this.viewProducersAction = viewProducersAction;
 		this.homeGetAction = homeGetAction;
+		this.editProducerAction = editProducerAction;
 	}
 
 
@@ -92,7 +95,7 @@ public class ActionFactory {
 			break;
 		}
 		case Constants.PATH_EDIT:{
-			action = editConfirmProducerAction;
+			action = editProducerAction;
 			break;
 		}
 		case Constants.PATH_EDIT_CONFIRM:{
