@@ -23,7 +23,7 @@ public class ButtonProducersPageAction extends AbstractAction{
 	@Override
 	public String executeRequest(HttpServletRequest request, HttpServletResponse response) {	
 		if (request.getSession(true).getAttribute("user")==null) {
-			return Constants.PAGE_LOGIN;
+			return Constants.VIEW_LOGIN;
 		}
 		return getProducerService().producersButtonViewForm(request);
 	}

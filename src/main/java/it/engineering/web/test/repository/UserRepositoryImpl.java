@@ -3,16 +3,19 @@ package it.engineering.web.test.repository;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import it.engineering.web.test.domain.User;
 
+@Repository
 public class UserRepositoryImpl implements UserRepository {
+	@PersistenceContext
 	private EntityManager em;
 	
-	
-	public UserRepositoryImpl(EntityManager em) {
-		this.em = em;
-	}
+
 
 	@Override
 	public void saveOrUpdate(User user) {
@@ -26,13 +29,14 @@ public class UserRepositoryImpl implements UserRepository {
 	
 	@Override
 	public User findByUsername(String username) {
-		String query="SELECT u FROM user u WHERE u.username=:user1";
-		List<User> users=em.createQuery(query,User.class).setParameter("user1", username).getResultList();
+		String query="SELECT u FROM User u WHERE  u.username=:username";
+		List<User> users=em.createQuery(query,User.class).setParameter("username", username).getResultList();
 		User user = users.size()==0? null : users.get(0);
 		return user;
 	}
 
 	@Override
+	@Transactional
 	public void delete(Long id) {
 		User user = em.find(User.class, id);
 		em.remove(user);

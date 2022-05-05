@@ -62,6 +62,8 @@ public class FrontController extends HttpServlet {
 	}
 	private void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String view = applicationController.processRequest(request, response);
+		System.out.println("view: " + view);
+		System.out.println("page: " + viewResolver.getPage(view));
 		//na osnovu pogleda vrati konkretnu stranicu korisniku
 		request.getRequestDispatcher(viewResolver.getPage(view)).forward(request, response);
 	}
